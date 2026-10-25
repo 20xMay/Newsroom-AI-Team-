@@ -1,0 +1,411 @@
+/* Layout tổng quan */
+.publish-page-container {
+  padding: 24px 32px;
+  background-color: #f8fafc;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: #0f172a;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Header Top */
+.publish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.page-title {
+  font-size: 70px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+.page-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Nút bấm viền trắng */
+.btn-outline {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* Row Thống Kê 4 Ô */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+.stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Dot màu */
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot-green { background: #16a34a; }
+.dot-blue { background: #2563eb; }
+.dot-red { background: #dc2626; }
+.dot-purple { background: #7e22ce; }
+
+/* Main Card */
+.publish-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Tabs */
+.publish-tabs {
+  display: flex;
+  gap: 20px;
+  padding: 0 24px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.tab-item {
+  background: none;
+  border: none;
+  padding: 16px 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+}
+.tab-item.active {
+  color: #2563eb;
+  font-weight: 600;
+}
+.tab-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: #2563eb;
+}
+
+/* Filter Bar */
+.publish-filter-bar {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.search-box {
+  position: relative;
+  flex: 1;
+  max-width: 280px;
+}
+.search-box i {
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 13px;
+}
+.search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+}
+.select-box {
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #334155;
+  background: #ffffff;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Publish List Rows */
+.publish-list {
+  display: flex;
+  flex-direction: column;
+}
+.publish-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.2s;
+}
+.publish-item:hover {
+  background: #f8fafc;
+}
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.file-icon-box {
+  width: 40px;
+  height: 40px;
+  background: #eff6ff;
+  color: #1e40af;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.item-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+.item-sub {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.item-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.time-col {
+  text-align: left;
+}
+.time-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+.time-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Status Badges */
+.status-tag {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.tag-green { background: #dcfce7; color: #15803d; }
+.tag-yellow { background: #fef3c7; color: #b45309; }
+.tag-blue { background: #dbeafe; color: #1d4ed8; }
+.tag-gray { background: #f1f5f9; color: #64748b; }
+
+/* Buttons Action */
+.action-group {
+  display: flex;
+  gap: 8px;
+}
+.btn-act {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn-act-blue { background: #1e3a8a; color: #fff; }
+.btn-act-blue:hover { background: #1e40af; }
+.btn-act-outline { background: #fff; border-color: #cbd5e1; color: #334155; }
+.btn-act-outline:hover { background: #f8fafc; }
+.btn-act-danger { background: #fff; border-color: #fca5a5; color: #dc2626; }
+.btn-act-danger:hover { background: #fef2f2; }
+
+/* =========================================================================
+   MODAL HỘP THOẠI LÊN LỊCH XUẤT BẢN (KHỚP HÌNH 2)
+   ========================================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 480px;
+  max-width: 90%;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+  padding: 20px 24px 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: #0f172a;
+}
+.modal-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+.btn-close-modal {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #94a3b8;
+  cursor: pointer;
+}
+.btn-close-modal:hover { color: #0f172a; }
+
+.modal-body {
+  padding: 12px 24px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+.flex-1 { flex: 1; }
+
+.form-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #0f172a;
+  outline: none;
+  box-sizing: border-box;
+}
+.modal-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Alert Cảnh báo Xung đột Nhẹ (Vàng nhạt) */
+.alert-warning-box {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+.alert-icon {
+  color: #d97706;
+  font-size: 16px;
+  margin-top: 2px;
+}
+.alert-text strong {
+  display: block;
+  font-size: 13px;
+  color: #92400e;
+  margin-bottom: 2px;
+}
+.alert-text p {
+  font-size: 12px;
+  color: #b45309;
+  margin: 0;
+}
+
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.btn-modal-cancel {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-modal-cancel:hover { background: #f8fafc; }
+
+.btn-modal-submit {
+  background: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-modal-submit:hover { background: #1e40af; }

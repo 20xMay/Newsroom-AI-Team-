@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Xuất bản nội dung</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="xuatban.css">
+</head>
+<body>
+
+  <div class="publish-page-container">
+    
+    <!-- HEADER TRANG -->
+    <div class="publish-header">
+      <div class="header-titles">
+        <h1 class="page-title">Xuất bản nội dung</h1>
+        <p class="page-subtitle">Kiểm soát, lên lịch và xuất bản nội dung trên các kênh của tòa soạn.</p>
+      </div>
+      <button class="btn btn-outline" id="btnOpenScheduleModal">
+        <i class="fa-regular fa-calendar"></i>
+        <span>Mở lịch xuất bản</span>
+      </button>
+    </div>
+
+    <!-- HÀNG THỐNG KÊ Top Cards -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num"><span class="dot dot-green"></span> 4</div>
+        <div class="stat-label">Sẵn sàng xuất bản</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span class="dot dot-blue"></span> 7</div>
+        <div class="stat-label">Đã lên lịch</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span class="dot dot-red"></span> 2</div>
+        <div class="stat-label">Cần chỉnh sửa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span class="dot dot-purple"></span> 12</div>
+        <div class="stat-label">Đã xuất bản hôm nay</div>
+      </div>
+    </div>
+
+    <!-- KHUNG DANH SÁCH BÀI VIẾT MAIN CARD -->
+    <div class="card publish-card">
+      
+      <!-- TABS NỔI PHÍA TRÊN -->
+      <div class="publish-tabs">
+        <button class="tab-item active" data-tab="all">Chờ xuất bản</button>
+        <button class="tab-item" data-tab="scheduled">Đã lên lịch</button>
+        <button class="tab-item" data-tab="published">Đã xuất bản</button>
+        <button class="tab-item" data-tab="rejected">Bị từ chối</button>
+      </div>
+
+      <!-- THANH TÌM KIẾM VÀ LỌC -->
+      <div class="publish-filter-bar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Tìm bài viết...">
+        </div>
+        <select id="categoryFilter" class="select-box">
+          <option value="all">Tất cả danh mục</option>
+          <option value="Công nghệ">Công nghệ</option>
+          <option value="Kinh tế">Kinh tế</option>
+          <option value="Du lịch">Du lịch</option>
+        </select>
+        <select id="authorFilter" class="select-box">
+          <option value="all">Mọi tác giả</option>
+          <option value="Nguyễn Lan Anh">Nguyễn Lan Anh</option>
+          <option value="Trần Minh Khoa">Trần Minh Khoa</option>
+          <option value="Hoàng Phương">Hoàng Phương</option>
+          <option value="Lê Quang Huy">Lê Quang Huy</option>
+        </select>
+      </div>
+
+      <!-- DANH SÁCH BÀI VIẾT (PUBLISH LIST) -->
+      <div class="publish-list" id="publishListContainer">
+        <!-- Render Javascript ở đây -->
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL LÊN LỊCH XUẤT BẢN (KHỚP HÌNH 2) -->
+  <div class="modal-overlay" id="scheduleModal">
+    <div class="modal-card">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">Lên lịch xuất bản</h2>
+          <p class="modal-subtitle">Chọn thời gian phù hợp cho bài viết.</p>
+        </div>
+        <button class="btn-close-modal" id="btnCloseModal">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        
+        <!-- Ô Chọn Ngày -->
+        <div class="form-group">
+          <label class="form-label">NGÀY XUẤT BẢN</label>
+
+          <div class="input-with-icon">
+            <input type="date" id="scheduleDate" class="modal-input">
+          </div>
+        </div>
+
+        <!-- Ô Chọn Thời Gian & Múi Giờ -->
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label class="form-label">THỜI GIAN</label>
+
+            <div class="input-with-icon">
+              <input type="time" id="scheduleTime" class="modal-input" value="15:00">
+            </div>
+          </div>
+
+          <div class="form-group flex-1">
+            <label class="form-label">MÚI GIỜ</label>
+            <select id="scheduleTimezone" class="modal-input modal-select">
+              <option value="GMT+7">GMT+7 (Hà Nội)</option>
+              <option value="GMT+8">GMT+8 (Singapore)</option>
+              <option value="GMT+0">GMT+0 (London)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Alert Cảnh Báo Xung Đột Nhẹ -->
+        <div class="alert-warning-box">
+          <i class="fa-solid fa-triangle-exclamation alert-icon"></i>
+          <div class="alert-text">
+            <strong>Phát hiện xung đột nhẹ</strong>
+            <p>Đã có một bài khác lên lịch lúc 14:30. Khung giờ 15:00 được đề xuất.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer Buttons -->
+      <div class="modal-footer">
+        <button class="btn btn-modal-cancel" id="btnCancelModal">Hủy</button>
+        <button class="btn btn-modal-submit" id="btnSubmitSchedule">Xác nhận lịch</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="xuatban.js"></script>
+</body>
+</html>
