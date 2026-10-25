@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Trình soạn thảo</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="trinhsoanthao.css">
+</head>
+<body>
+
+  <div class="editor-container">
+    
+    <!-- Top Bar của Trình Soạn Thảo -->
+    <div class="editor-header">
+      <div class="header-left-info">
+        <div class="breadcrumb-path">Bản nháp / <span id="categoryBreadcrumb">Công nghệ</span></div>
+        <h1 class="page-title">Soạn thảo bài viết</h1>
+      </div>
+      <div class="header-right-actions">
+        <span class="save-status" id="saveStatus">• Đã lưu vừa xong</span>
+        <button class="btn btn-outline" id="btnSaveDraft">
+          <i class="fa-regular fa-bookmark"></i>
+          <span>Lưu nháp</span>
+        </button>
+        <button class="btn btn-primary-dark" id="btnSubmitReview">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Gửi duyệt</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Editor Grid (Bên trái: Form viết bài, Bên phải: Panel AI) -->
+    <div class="editor-grid">
+      
+      <!-- CỘT TRÁI: FORM BÀI VIẾT -->
+      <div class="editor-main-form">
+        
+        <!-- Tiêu đề bài viết -->
+        <div class="form-group">
+          <label class="form-label">TIÊU ĐỀ BÀI VIẾT</label>
+          <input type="text" id="articleTitle" class="form-control input-title" placeholder="Nhập tiêu đề bài viết..." value="AI đang thay đổi ngành giáo dục Việt Nam như thế nào?">
+        </div>
+
+        <!-- Danh mục & Ưu tiên -->
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label class="form-label">DANH MỤC</label>
+            <select id="articleCategory" class="form-control select-box">
+              <option value="Công nghệ" selected>Công nghệ</option>
+              <option value="Kinh tế">Kinh tế</option>
+              <option value="Xã hội">Xã hội</option>
+              <option value="Văn hóa">Văn hóa</option>
+            </select>
+          </div>
+          <div class="form-group flex-1">
+            <label class="form-label">ƯU TIÊN</label>
+            <select id="articlePriority" class="form-control select-box">
+              <option value="Thấp">Thấp</option>
+              <option value="Trung bình" selected>Trung bình</option>
+              <option value="Cao">Cao</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Ảnh bìa -->
+        <div class="form-group">
+          <label class="form-label">ẢNH BÌA</label>
+          <div class="cover-image-upload" id="coverDropzone">
+            <div class="upload-icon"><i class="fa-solid fa-plus"></i></div>
+            <div class="upload-text">
+              <div class="upload-title">Thêm ảnh bìa</div>
+              <div class="upload-subtitle">PNG, JPG hoặc WebP · tối đa 8 MB · tỷ lệ đề xuất 16:9</div>
+            </div>
+            <button class="btn btn-light-btn" type="button" id="btnSelectMedia">Chọn từ Media</button>
+            <input type="file" id="coverFileInput" accept="image/*" style="display: none;">
+          </div>
+          <div id="coverPreviewContainer" class="cover-preview-box" style="display: none;">
+            <img id="coverPreviewImg" src="" alt="Ảnh bìa">
+            <button class="btn-remove-cover" id="btnRemoveCover" title="Xóa ảnh"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+
+        <!-- Nội dung bài viết (WYSIWYG Rich Text Editor) -->
+        <div class="form-group">
+          <label class="form-label">NỘI DUNG</label>
+          <div class="editor-wrapper">
+            
+            <!-- Toolbar công cụ -->
+            <div class="editor-toolbar">
+              <button type="button" class="tool-btn" data-command="bold" title="In đậm"><b>B</b></button>
+              <button type="button" class="tool-btn" data-command="italic" title="In nghiêng"><i>I</i></button>
+              <button type="button" class="tool-btn" data-command="underline" title="Gạch chân"><u>U</u></button>
+              <span class="toolbar-divider"></span>
+              <button type="button" class="tool-btn" data-command="h1" title="Tiêu đề 1">H1</button>
+              <button type="button" class="tool-btn" data-command="h2" title="Tiêu đề 2">H2</button>
+              <span class="toolbar-divider"></span>
+              <button type="button" class="tool-btn" data-command="insertUnorderedList" title="Danh sách chấm"><i class="fa-solid fa-list-ul"></i></button>
+              <button type="button" class="tool-btn" data-command="insertOrderedList" title="Danh sách số"><i class="fa-solid fa-list-ol"></i></button>
+              <button type="button" class="tool-btn" data-command="createLink" title="Chèn link"><i class="fa-solid fa-link"></i></button>
+              <button type="button" class="tool-btn" data-command="formatBlock" data-value="blockquote" title="Trích dẫn"><i class="fa-solid fa-quote-left"></i></button>
+              <span class="toolbar-divider"></span>
+              <button type="button" class="tool-btn ai-sparkle-btn" id="btnAiQuickAction" title="Tối ưu AI"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+            </div>
+
+            <!-- Vùng soạn thảo chính (Editable) -->
+            <div class="editor-content" id="editorBody" contenteditable="true">
+              <h2>AI bước vào lớp học</h2>
+              <p>Trong những năm gần đây, trí tuệ nhân tạo đã từng bước đi vào các lớp học tại Việt Nam, từ hệ thống bài tập tự động đến những trợ lý học tập được cá nhân hóa.</p>
+              <p>Theo báo cáo mới nhất, <mark class="claim-highlight">hơn 65% cơ sở giáo dục tại các thành phố lớn đã thử nghiệm ít nhất một giải pháp AI trong giảng dạy</mark>. Con số này cho thấy tốc độ tiếp nhận công nghệ đang diễn ra nhanh chóng.</p>
+              <h2>Cơ hội đi cùng thách thức</h2>
+              <p>AI mở ra khả năng cá nhân hóa trải nghiệm học tập cho từng học sinh. Tuy nhiên, câu hỏi về quyền riêng tư dữ liệu và khả năng tiếp cận công bằng vẫn cần được giải quyết.</p>
+              <p><mark class="claim-highlight">Bộ Giáo dục dự kiến sẽ ban hành khung hướng dẫn AI trong trường học vào cuối năm nay</mark>.</p>
+            </div>
+
+            <!-- Footer thông kê từ -->
+            <div class="editor-footer-status">
+              <span id="wordCount">642 từ</span>
+              <span class="footer-divider">|</span>
+              <span id="readingTime">Thời gian đọc 3 phút</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CỘT PHẢI: TRỢ LÝ NEWSROOM AI -->
+      <div class="editor-ai-sidebar">
+        <div class="card ai-panel-card">
+          
+          <div class="ai-panel-header">
+            <div class="ai-title"><i class="fa-solid fa-wand-magic-sparkles"></i> NEWSROOM AI</div>
+            <span class="badge badge-purple-fill">BETA</span>
+          </div>
+
+          <!-- Quick Actions Grid -->
+          <div class="ai-actions-grid">
+            <button class="ai-action-btn" data-action="summary"><i class="fa-solid fa-wand-magic-sparkles"></i> Tóm tắt</button>
+            <button class="ai-action-btn" data-action="continue"><i class="fa-solid fa-wand-magic-sparkles"></i> Viết tiếp</button>
+            <button class="ai-action-btn" data-action="grammar"><i class="fa-regular fa-circle-check"></i> Sửa ngữ pháp</button>
+            <button class="ai-action-btn" data-action="tone"><i class="fa-solid fa-sliders"></i> Giọng văn</button>
+          </div>
+
+          <!-- SEO Suggestion Option -->
+          <div class="ai-option-box active">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>SEO title</span>
+          </div>
+
+          <!-- Card Tối ưu Tiêu đề SEO -->
+          <div class="card ai-inner-card">
+            <div class="inner-card-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Tối ưu tiêu đề SEO</div>
+            <p class="inner-card-desc">AI phân tích toàn bộ bản thảo và đưa ra gợi ý theo ngữ cảnh, phong cách của tòa soạn.</p>
+            <button class="btn btn-purple-full" id="btnGenerateAiSeo"><i class="fa-solid fa-wand-magic-sparkles"></i> Tạo gợi ý</button>
+
+            <!-- Kết quả AI gợi ý -->
+            <div class="ai-result-box" id="aiResultBox">
+              <div class="result-header">
+                <span class="result-title">KẾT QUẢ GỢI Ý</span>
+                <span class="result-match">92% phù hợp</span>
+              </div>
+              <div class="result-content-title" id="aiSuggestedTitle">
+                AI đang định hình lại lớp học Việt Nam: Cơ hội và thách thức
+              </div>
+              <p class="result-reason">
+                Tiêu đề làm rõ phạm vi địa lý, thể hiện cân bằng giữa cơ hội và thách thức, phù hợp nội dung phân tích.
+              </p>
+              <div class="result-actions">
+                <button class="btn btn-sm btn-purple-sm" id="btnApplyAiTitle"><i class="fa-solid fa-check"></i> Chấp nhận</button>
+                <button class="btn btn-sm btn-outline-sm" id="btnEditAiTitle">Sửa</button>
+                <button class="btn btn-sm btn-ghost-sm" id="btnRegenerateAiTitle">Tạo lại</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Warning Box thiếu nguồn -->
+          <div class="warning-alert-box">
+            <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+            <div class="warning-text">
+              <strong>Cần bổ sung 2 nguồn</strong> trước khi gửi duyệt. Các claim đã được đánh dấu trong bài.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JavaScript xử lý Editor + AutoSave -->
+  <script src="trinhsoanthao.js"></script>
+
+</body>
+</html>
