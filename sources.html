@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Thư viện nguồn</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="sources.css">
+</head>
+<body>
+  <div class="sources-view">
+    <section class="page-header">
+      <div>
+        <h1 class="page-title">Thư viện nguồn</h1>
+        <p class="page-subtitle">Nguồn tin được xác minh và chia sẻ trong toàn tòa soạn.</p>
+      </div>
+      <button class="btn btn-primary btn-sm" id="btn-add-source" type="button">
+        <i class="fa-solid fa-plus"></i>
+        <span>Thêm nguồn</span>
+      </button>
+    </section>
+
+    <section class="sources-stats-grid">
+      <div class="sources-stat-card">
+        <span class="stat-num" id="stat-total">0</span>
+        <span class="stat-label">Tổng số nguồn</span>
+      </div>
+      <div class="sources-stat-card">
+        <span class="stat-num" id="stat-verified">0</span>
+        <span class="stat-label">Đã xác minh</span>
+      </div>
+      <div class="sources-stat-card">
+        <span class="stat-num" id="stat-pending">0</span>
+        <span class="stat-label">Chờ đánh giá</span>
+      </div>
+    </section>
+
+    <section class="sources-card">
+      <div class="filter-bar">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="filter-search" placeholder="Tìm tên hoặc URL nguồn...">
+        </div>
+        <div class="filter-selects">
+          <select id="filter-type" class="filter-select">
+            <option value="all">Tất cả loại</option>
+            <option value="Cơ quan nhà nước">Cơ quan nhà nước</option>
+            <option value="Tổ chức quốc tế">Tổ chức quốc tế</option>
+            <option value="Báo chí chính thống">Báo chí chính thống</option>
+            <option value="Viện nghiên cứu">Viện nghiên cứu</option>
+          </select>
+          <select id="filter-status" class="filter-select">
+            <option value="all">Tất cả trạng thái</option>
+            <option value="Hoạt động">Hoạt động</option>
+            <option value="Tạm dừng">Tạm dừng</option>
+            <option value="Chờ duyệt">Chờ duyệt</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>TÊN NGUỒN</th>
+              <th>URL</th>
+              <th>LOẠI</th>
+              <th>ĐỘ TIN CẬY</th>
+              <th>LẦN DÙNG</th>
+              <th>TRẠNG THÁI</th>
+            </tr>
+          </thead>
+          <tbody id="source-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal-overlay" id="add-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Thêm nguồn tin mới</h3>
+        <button class="btn-close-modal" id="btn-close-modal" type="button" aria-label="Đóng">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="add-source-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="input-name">Tên nguồn tin <span class="text-required">*</span></label>
+            <input type="text" class="form-input" id="input-name" placeholder="VD: Tổng cục Thống kê" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-url">Đường dẫn URL <span class="text-required">*</span></label>
+            <input type="text" class="form-input" id="input-url" placeholder="VD: gso.gov.vn" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="input-type">Loại nguồn</label>
+              <select class="form-select" id="input-type">
+                <option value="Cơ quan nhà nước">Cơ quan nhà nước</option>
+                <option value="Tổ chức quốc tế">Tổ chức quốc tế</option>
+                <option value="Báo chí chính thống">Báo chí chính thống</option>
+                <option value="Viện nghiên cứu">Viện nghiên cứu</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="input-trust">Độ tin cậy</label>
+              <select class="form-select" id="input-trust">
+                <option value="Cao">Cao</option>
+                <option value="Trung bình">Trung bình</option>
+                <option value="Thấp">Thấp</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-modal">Hủy</button>
+          <button type="submit" class="btn-primary-submit">Lưu nguồn tin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="sources.js"></script>
+</body>
+</html>
