@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Phân tích tòa soạn</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js Thư viện vẽ biểu đồ -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="phantich.css">
+</head>
+<body>
+
+  <div class="analytics-container">
+    
+    <!-- HEADER TRANG -->
+    <div class="analytics-header">
+      <div class="header-titles">
+        <h1 class="page-title">Phân tích tòa soạn</h1>
+        <p class="page-subtitle">Tổng quan hiệu suất nội dung từ 01–24 tháng 6.</p>
+      </div>
+      <div class="header-actions">
+        <select id="timeRangeSelect" class="select-range">
+          <option value="30">30 ngày gần nhất</option>
+          <option value="7">7 ngày gần nhất</option>
+          <option value="90">Quý này</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- HÀNG 4 METRIC CARDS TOP -->
+    <div class="metrics-grid">
+      
+      <!-- Card 1 -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon icon-blue">
+            <i class="fa-regular fa-file-lines"></i>
+          </div>
+          <span class="metric-label">Bài đã xuất bản</span>
+          <i class="fa-solid fa-chevron-right metric-arrow"></i>
+        </div>
+        <div class="metric-value">128</div>
+        <div class="metric-growth growth-up">+12,4% so với kỳ trước</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon icon-green">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <span class="metric-label">Tỷ lệ duyệt</span>
+          <i class="fa-solid fa-chevron-right metric-arrow"></i>
+        </div>
+        <div class="metric-value">84,2%</div>
+        <div class="metric-growth growth-up">+3,1% so với kỳ trước</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon icon-purple">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+          <span class="metric-label">Pitch đến publish</span>
+          <i class="fa-solid fa-chevron-right metric-arrow"></i>
+        </div>
+        <div class="metric-value">3,2 ngày</div>
+        <div class="metric-growth growth-down">-0,4 ngày</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon icon-yellow">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <span class="metric-label">Claim chưa kiểm</span>
+          <i class="fa-solid fa-chevron-right metric-arrow"></i>
+        </div>
+        <div class="metric-value">14</div>
+        <div class="metric-warning">5 claim ưu tiên</div>
+      </div>
+
+    </div>
+
+    <!-- HÀNG 2 BIỂU ĐỒ CHÍNH (CHARTS ROW) -->
+    <div class="charts-grid">
+      
+      <!-- Biểu đồ Cột - Bài viết theo tuần -->
+      <div class="card chart-card">
+        <div class="chart-header">
+          <div>
+            <h2 class="chart-title">Bài viết theo tuần</h2>
+            <p class="chart-subtitle">Số lượng xuất bản và bản nháp</p>
+          </div>
+          <button class="btn-more-options"><i class="fa-solid fa-ellipsis"></i></button>
+        </div>
+        <div class="chart-body">
+          <canvas id="weeklyArticlesChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Biểu đồ Đường - Content throughput -->
+      <div class="card chart-card">
+        <div class="chart-header">
+          <div>
+            <h2 class="chart-title">Content throughput</h2>
+            <p class="chart-subtitle">Hiệu suất qua từng giai đoạn</p>
+          </div>
+          <span class="badge-growth-tag">+8,2%</span>
+        </div>
+        <div class="chart-body">
+          <canvas id="throughputChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- KHUNG TOP DANH MỤC THEO LƯỢT XEM -->
+    <div class="card top-categories-card">
+      <div class="category-header">
+        <div>
+          <h2 class="chart-title">Top danh mục theo lượt xem</h2>
+          <p class="chart-subtitle">Hiệu suất nội dung trong tháng</p>
+        </div>
+        <a href="#" class="btn-link-report">Xem báo cáo</a>
+      </div>
+
+      <div class="category-list">
+        
+        <!-- Category Row 1 -->
+        <div class="category-item">
+          <div class="cat-rank">1</div>
+          <div class="cat-name">Công nghệ</div>
+          <div class="cat-bar-wrapper">
+            <div class="cat-bar-fill" style="width: 85%;"></div>
+          </div>
+          <div class="cat-views">248.420 lượt xem</div>
+        </div>
+
+        <!-- Category Row 2 -->
+        <div class="category-item">
+          <div class="cat-rank">2</div>
+          <div class="cat-name">Kinh tế</div>
+          <div class="cat-bar-wrapper">
+            <div class="cat-bar-fill" style="width: 72%;"></div>
+          </div>
+          <div class="cat-views">196.870 lượt xem</div>
+        </div>
+
+        <!-- Category Row 3 -->
+        <div class="category-item">
+          <div class="cat-rank">3</div>
+          <div class="cat-name">Xã hội</div>
+          <div class="cat-bar-wrapper">
+            <div class="cat-bar-fill" style="width: 52%;"></div>
+          </div>
+          <div class="cat-views">142.180 lượt xem</div>
+        </div>
+
+        <!-- Category Row 4 -->
+        <div class="category-item">
+          <div class="cat-rank">4</div>
+          <div class="cat-name">Văn hóa</div>
+          <div class="cat-bar-wrapper">
+            <div class="cat-bar-fill" style="width: 38%;"></div>
+          </div>
+          <div class="cat-views">98.640 lượt xem</div>
+        </div>
+
+        <!-- Category Row 5 -->
+        <div class="category-item">
+          <div class="cat-rank">5</div>
+          <div class="cat-name">Thể thao</div>
+          <div class="cat-bar-wrapper">
+            <div class="cat-bar-fill" style="width: 32%;"></div>
+          </div>
+          <div class="cat-views">82.310 lượt xem</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="phantich.js"></script>
+</body>
+</html>
