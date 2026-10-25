@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Hàng đợi biên tập</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="duyetbai.css">
+</head>
+<body>
+
+  <div class="editorial-queue-container">
+    
+    <div class="queue-page-header">
+      <div class="header-titles">
+        <h1 class="queue-title">Hàng đợi biên tập</h1>
+        <p class="queue-subtitle">Đánh giá, ưu tiên và quản lý nội dung đang chờ xử lý.</p>
+      </div>`
+    </div>
+
+    <div class="card queue-card">
+      
+      <div class="queue-tabs-nav">
+        <button class="queue-tab-btn" data-tab="Pitch">Pitch <span class="tab-count">3</span></button>
+        <button class="queue-tab-btn active" data-tab="Draft">Draft <span class="tab-count">8</span></button>
+        <button class="queue-tab-btn" data-tab="FactCheck">Chờ fact-check <span class="tab-count">5</span></button>
+        <button class="queue-tab-btn" data-tab="PublishReady">Chờ đăng <span class="tab-count">4</span></button>
+      </div>
+
+      <div class="queue-filter-bar">
+        <div class="search-input-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="queueSearchInput" placeholder="Tìm theo tiêu đề, tác giả...">
+        </div>
+
+        <div class="filter-dropdowns">
+          <select id="filterStatus" class="select-control">
+            <option value="all">Tất cả trạng thái</option>
+            <option value="Chờ duyệt">Chờ duyệt</option>
+            <option value="Bản nháp">Bản nháp</option>
+            <option value="Chờ fact-check">Chờ fact-check</option>
+            <option value="Chờ đăng">Chờ đăng</option>
+          </select>
+
+          <select id="filterPriority" class="select-control">
+            <option value="all">Mọi ưu tiên</option>
+            <option value="Cao">Cao</option>
+            <option value="Trung bình">Trung bình</option>
+            <option value="Thấp">Thấp</option>
+          </select>
+
+          <select id="filterCategory" class="select-control">
+            <option value="all">Tất cả danh mục</option>
+            <option value="Công nghệ">Công nghệ</option>
+            <option value="Kinh tế">Kinh tế</option>
+            <option value="Du lịch">Du lịch</option>
+            <option value="Đô thị">Đô thị</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="queue-table">
+          <thead>
+            <tr>
+              <th style="width: 38%;">TIÊU ĐỀ</th>
+              <th style="width: 18%;">TÁC GIẢ</th>
+              <th style="width: 16%;">NGÀY TẠO</th>
+              <th style="width: 12%;">ƯU TIÊN</th>
+              <th style="width: 12%;">TRẠNG THÁI</th>
+              <th style="width: 4%; text-align: right;">HÀNH ĐỘNG</th>
+            </tr>
+          </thead>
+          <tbody id="editorialQueueTableBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="queue-pagination-footer">
+        <div class="pagination-info" id="paginationInfo">
+          Hiển thị 1–4 trong 8 bài
+        </div>
+        <div class="pagination-buttons">
+          <button class="btn-page" id="btnPrevPage" disabled>Trước</button>
+          <button class="btn-page" id="btnNextPage">Sau</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="duyetbai.js"></script>
+</body>
+</html>
