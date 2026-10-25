@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Trợ lý AI</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="trolyai.css">
+</head>
+<body>
+
+  <!-- Khung To Bao Tròn Toàn Bộ Trang -->
+  <div class="ai-page-card">
+    
+    <!-- CỘT BÊN TRÁI: DANH SÁCH CUỘC TRÒ CHUYỆN -->
+    <aside class="ai-sidebar">
+      <button class="btn btn-new-chat" id="btnNewChat">
+        <i class="fa-solid fa-plus"></i>
+        <span>Cuộc trò chuyện mới</span>
+      </button>
+
+      <div class="recent-chats-container">
+        <div class="sidebar-section-title">GẦN ĐÂY</div>
+        <div class="chat-list" id="chatHistoryList">
+          <!-- JS sẽ render danh sách đoạn chat vào đây -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- CỘT BÊN PHẢI: KHUNG CHAT CHÍNH -->
+    <main class="ai-chat-main">
+      
+      <!-- Top Header Trợ lý -->
+      <div class="ai-chat-header">
+        <div class="header-assistant-info">
+          <div class="ai-avatar-badge">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div class="assistant-titles">
+            <h1 class="assistant-name">Trợ lý Newsroom AI</h1>
+            <p class="assistant-desc">Hỏi đáp, phân tích và tăng tốc quy trình biên tập của bạn.</p>
+          </div>
+        </div>
+        <div class="assistant-status">
+          <span class="status-dot"></span>
+          <span>Đang hoạt động</span>
+        </div>
+      </div>
+
+      <!-- Vùng hiển thị tin nhắn (Chat Body) -->
+      <div class="ai-chat-body" id="chatMessageList">
+        
+        <!-- Welcome Block từ AI -->
+        <div class="chat-message message-ai message-welcome">
+          <div class="msg-avatar">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div class="msg-content-wrapper">
+            <div class="welcome-box">
+              <h2>Xin chào Lan Anh, tôi có thể giúp gì cho bạn?</h2>
+              <p>Tôi có thể hỗ trợ lên ý tưởng, tóm tắt tài liệu, cải thiện bài viết hoặc kiểm tra nguồn tin.</p>
+            </div>
+
+            <!-- Gợi ý nhanh (Quick Prompts) -->
+            <div class="quick-prompts-grid">
+              <button class="prompt-chip" data-prompt="Gợi ý 5 tiêu đề hấp dẫn cho bài viết">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Gợi ý 5 tiêu đề hấp dẫn</span>
+              </button>
+
+              <button class="prompt-chip" data-prompt="Tóm tắt bài viết đang soạn thảo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Tóm tắt bài đang viết</span>
+              </button>
+
+              <button class="prompt-chip" data-prompt="Kiểm tra tính trung lập của bài viết">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Kiểm tra tính trung lập</span>
+              </button>
+
+              <button class="prompt-chip" data-prompt="Tìm điểm cần bổ sung nguồn và số liệu">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Tìm điểm cần bổ sung nguồn</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Khung nhập liệu ở dưới (Chat Input Area) -->
+      <div class="ai-chat-footer">
+        <div class="input-box-wrapper">
+          <button class="btn-attach-file" title="Tải tệp lên">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+
+          <textarea id="userChatInput" placeholder="Hỏi Newsroom AI bất kỳ điều gì..." rows="1"></textarea>
+
+          <button class="btn-send-message" id="btnSendMessage" title="Gửi tin nhắn">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+        <div class="ai-disclaimer">
+          Newsroom AI có thể mắc lỗi. Hãy kiểm tra thông tin quan trọng và nguồn dẫn.
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Custom JS -->
+  <script src="trolyai.js"></script>
+</body>
+</html>
