@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Frame</title>
+  
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+
+  <!-- Overlay cho Mobile Sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Wrapper -->
+  <div class="app-wrapper">
+    
+    <!-- Sidebar / Thanh điều hướng bên trái -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-logo">
+            <i class="fa-solid fa-square-poll-vertical"></i>
+          </div>
+          <span class="brand-name">Newsroom <span>AI</span></span>
+        </div>
+      </div>
+
+      <div class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-title">Không gian làm việc</div>
+          <a href="#" class="nav-item active">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-pen-nib"></i>
+            <span>Trình soạn thảo</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Trợ lý AI</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-regular fa-comment-dots"></i>
+            <span>Nguồn tin</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-regular fa-circle-check"></i>
+            <span>Duyệt bài</span>
+            <span class="badge badge-blue">8</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-regular fa-paper-plane"></i>
+            <span>Xuất bản</span>
+            <span class="badge badge-blue">4</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Phân tích</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-regular fa-folder"></i>
+            <span>Thư viện Media</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Hệ thống</div>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Cài đặt</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="user-avatar">LA</div>
+          <div class="user-info">
+            <div class="user-name">Lan Anh</div>
+            <div class="user-role">Phóng viên</div>
+          </div>
+          <button class="btn-logout" title="Đăng xuất">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area / Khung chính bên phải -->
+    <main class="main-content">
+      
+      <!-- Top Header Navigation -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-toggle" id="mobileToggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="breadcrumb">
+            <a href="#">Không gian làm việc</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span class="current">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" placeholder="Tìm kiếm bài viết, nguồn tin...">
+            <span class="shortcut">⌘ K</span>
+          </div>
+
+          <button class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-plus"></i>
+            <span>Bài viết mới</span>
+          </button>
+
+          <div class="header-actions">
+            <button class="icon-btn" title="Chế độ tối">
+              <i class="fa-regular fa-moon"></i>
+            </button>
+            <button class="icon-btn" title="Thông báo">
+              <i class="fa-regular fa-bell"></i>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="header-avatar">LA</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dynamic View / Vùng nhúng nội dung trang của từng thành viên -->
+      <div class="content-body" id="appContent">
+        <!-- Các thành viên trong nhóm sẽ chèn/render nội dung trang của mình vào đây -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
