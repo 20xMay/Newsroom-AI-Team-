@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Newsroom AI - Frame</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="common.css">
+</head>
+
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-logo">
+                        <i class="fa-solid fa-square-poll-vertical"></i>
+                    </div>
+                    <span class="brand-name">
+                        Newsroom <span>AI</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+
+                <div class="nav-section">
+
+                    <div class="nav-section-title">
+                        Không gian làm việc
+                    </div>
+
+                    <!-- DASHBOARD -->
+                    <a href="dashboard.html" class="nav-item active" target="mainFrame">
+                        <i class="fa-solid fa-table-cells-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <!-- TRÌNH SOẠN THẢO -->
+                    <a href="trinhsoanthao.html" class="nav-item" target="mainFrame">
+                        <i class="fa-solid fa-pen-nib"></i>
+                        <span>Trình soạn thảo</span>
+                    </a>
+
+                    <!-- TRỢ LÝ AI (ĐÃ ĐIỀU CHỈNH ĐÚNG FILE TROLYAI.HTML) -->
+                    <a href="trolyai.html" class="nav-item" target="mainFrame">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Trợ lý AI</span>
+                    </a>
+
+                    <!-- NGUỒN TIN -->
+                    <a href="newsroomai/sources.html" class="nav-item" target="mainFrame">
+                        <i class="fa-regular fa-comment-dots"></i>
+                        <span>Nguồn tin</span>
+                    </a>
+
+                    <!-- DUYỆT BÀI -->
+                    <a href="duyetbai.html" class="nav-item" target="mainFrame">
+                        <i class="fa-regular fa-circle-check"></i>
+                        <span>Duyệt bài</span>
+                        <span class="badge badge-blue">8</span>
+                    </a>
+
+                    <!-- XUẤT BẢN -->
+                    <a href="xuatban.html" class="nav-item" target="mainFrame">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <span>Xuất bản</span>
+                        <span class="badge badge-blue">4</span>
+                    </a>
+
+                    <!-- PHÂN TÍCH -->
+                    <a href="phantich.html" class="nav-item" target="mainFrame">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>Phân tích</span>
+                    </a>
+
+                    <!-- THƯ VIỆN MEDIA -->
+                    <a href="newsroomai/media-library.html" class="nav-item" target="mainFrame">
+                        <i class="fa-regular fa-folder"></i>
+                        <span>Thư viện Media</span>
+                    </a>
+
+                </div>
+
+                <!-- HỆ THỐNG -->
+                <div class="nav-section">
+                    <div class="nav-section-title">
+                        Hệ thống
+                    </div>
+
+                    <a href="newsroomai/settings.html" class="nav-item" target="mainFrame">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Cài đặt</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- USER -->
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        LA
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">
+                            Lan Anh
+                        </div>
+                        <div class="user-role">
+                            Phóng viên
+                        </div>
+                    </div>
+                    <button class="btn-logout" title="Đăng xuất">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header class="top-header">
+
+                <div class="header-left">
+                    <button class="mobile-toggle" id="mobileToggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div class="breadcrumb">
+                        <a href="#">
+                            Không gian làm việc
+                        </a>
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <span class="current" id="currentPage">
+                            Dashboard
+                        </span>
+                    </div>
+                </div>
+
+                <div class="header-right">
+
+                    <!-- SEARCH -->
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" placeholder="Tìm kiếm bài viết, nguồn tin...">
+                        <span class="shortcut">⌘ K</span>
+                    </div>
+
+                    <!-- BÀI VIẾT MỚI -->
+                    <button class="btn btn-primary btn-sm" id="newArticleBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Bài viết mới</span>
+                    </button>
+
+                    <div class="header-actions">
+                        <!-- DARK MODE -->
+                        <button class="icon-btn" title="Chế độ tối">
+                            <i class="fa-regular fa-moon"></i>
+                        </button>
+
+                        <!-- NOTIFICATION -->
+                        <button class="icon-btn" title="Thông báo">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="notification-dot"></span>
+                        </button>
+
+                        <!-- AVATAR -->
+                        <div class="header-avatar">
+                            LA
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- CONTENT -->
+            <div class="content-body" id="appContent">
+                <iframe id="mainFrame" name="mainFrame" src="dashboard.html" title="Nội dung Newsroom AI">
+                </iframe>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="common.js"></script>
+
+</body>
+
+</html>
