@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsroom AI - Dashboard</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Header chào mừng & Nút hành động -->
+        <div class="dashboard-welcome">
+            <div class="welcome-text">
+                <div class="date-label" id="currentDate">
+                    ĐANG TẢI NGÀY...
+                </div>
+
+                <h1 class="welcome-title">
+                    <span id="greetingText">Chào buổi sáng</span>, Lan Anh
+                </h1>
+
+                <p class="welcome-subtitle">
+                    Đây là tổng quan hoạt động của tòa soạn trong hôm nay.
+                </p>
+            </div>
+
+
+        </div>
+
+
+        <!-- 4 Thẻ Thống Kê -->
+        <div class="stats-grid">
+
+            <!-- Card 1 -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon icon-blue">
+                        <i class="fa-regular fa-file-lines"></i>
+                    </div>
+                    <div class="stat-title-wrap">
+                        <span class="stat-title">Đã xuất bản</span>
+                        <i class="fa-solid fa-chevron-right stat-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="stat-value">128</div>
+
+                <div class="stat-trend trend-up">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    <span>+12,4% so với tuần trước</span>
+                </div>
+            </div>
+
+
+            <!-- Card 2 -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon icon-light-blue">
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+                    <div class="stat-title-wrap">
+                        <span class="stat-title">Bản nháp đang viết</span>
+                        <i class="fa-solid fa-chevron-right stat-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="stat-value">18</div>
+
+                <div class="stat-trend trend-neutral">
+                    <span>+3 bài trong hôm nay</span>
+                </div>
+            </div>
+
+
+            <!-- Card 3 -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon icon-orange">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="stat-title-wrap">
+                        <span class="stat-title">Đang chờ duyệt</span>
+                        <i class="fa-solid fa-chevron-right stat-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="stat-value">8</div>
+
+                <div class="stat-trend trend-warning">
+                    <span>2 bài ưu tiên cao</span>
+                </div>
+            </div>
+
+
+            <!-- Card 4 -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon icon-green">
+                        <i class="fa-regular fa-eye"></i>
+                    </div>
+                    <div class="stat-title-wrap">
+                        <span class="stat-title">Lượt xem tuần này</span>
+                        <i class="fa-solid fa-chevron-right stat-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="stat-value">1,2M</div>
+
+                <div class="stat-trend trend-up">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    <span>+18,6% so với tuần trước</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Khu vực giữa: Biểu đồ & Gợi ý từ AI -->
+        <div class="dashboard-middle-grid">
+
+            <!-- Biểu đồ Hiệu suất xuất bản -->
+            <div class="card chart-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <h2 class="card-title">Hiệu suất xuất bản 7 ngày</h2>
+                        <p class="card-subtitle">Bài đã xuất bản và lượng bài chờ duyệt</p>
+                    </div>
+
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-line line-solid"></span>
+                            <span>Đã xuất bản</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-line line-dashed"></span>
+                            <span>Chờ duyệt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="chart-container" style="position: relative; height: 220px;">
+                        <canvas id="publishChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Gợi ý từ Newsroom AI -->
+            <div class="card ai-suggestions-card">
+                <div class="card-header">
+                    <div class="ai-header-title">
+                        <i class="fa-solid fa-wand-magic-sparkles ai-icon"></i>
+                        <span>Gợi ý từ Newsroom AI</span>
+                    </div>
+
+                    <span class="badge badge-purple">3 mới</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="ai-suggestions-list">
+
+                        <!-- Suggestion 1 -->
+                        <div class="ai-suggestion-item">
+                            <div class="suggestion-icon icon-pink">
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+                            <div class="suggestion-content">
+                                <div class="suggestion-title">Hoàn thiện bài AI trong giáo dục</div>
+                                <div class="suggestion-desc">Độ hoàn thiện 78% · còn 2 claim thiếu nguồn</div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </div>
+
+                        <!-- Suggestion 2 -->
+                        <div class="ai-suggestion-item">
+                            <div class="suggestion-icon icon-blue-light">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <div class="suggestion-content">
+                                <div class="suggestion-title">Tối ưu 3 tiêu đề cho SEO</div>
+                                <div class="suggestion-desc">Khả năng tăng CTR ước tính 12–18%</div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </div>
+
+                        <!-- Suggestion 3 -->
+                        <div class="ai-suggestion-item">
+                            <div class="suggestion-icon icon-orange-light">
+                                <i class="fa-regular fa-calendar"></i>
+                            </div>
+                            <div class="suggestion-content">
+                                <div class="suggestion-title">Khung giờ xuất bản phù hợp</div>
+                                <div class="suggestion-desc">14:30 hôm nay có lượng đọc cao nhất</div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card-footer text-center">
+                    <a href="#" class="btn-link">
+                        Mở Trợ lý AI
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Bảng Bài viết gần đây -->
+        <div class="card articles-card">
+            <div class="card-header">
+                <div class="card-title-group">
+                    <h2 class="card-title">Bài viết gần đây</h2>
+                    <p class="card-subtitle">Cập nhật và tiếp tục công việc của bạn</p>
+                </div>
+
+                <a href="#" class="btn-link">
+                    Xem tất cả
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>TIÊU ĐỀ</th>
+                            <th>TRẠNG THÁI</th>
+                            <th>CẬP NHẬT</th>
+                            <th>DEADLINE</th>
+                            <th class="text-right"></th>
+                        </tr>
+                    </thead>
+
+                    <!-- JS sẽ render danh sách bài viết từ LocalStorage vào đây -->
+                    <tbody id="articlesTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Thư viện Chart.js để vẽ biểu đồ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JavaScript chính -->
+    <script src="dashboard.js"></script>
+
+</body>
+</html>
