@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Cài đặt</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="settings-view">
+    <div class="settings-page-header">
+      <div>
+        <h1 class="page-title">Cài đặt</h1>
+        <p class="page-subtitle">Quản lý hồ sơ, thông báo và cấu hình không gian làm việc.</p>
+      </div>
+      <button class="btn-primary-navy" id="btn-save-settings" type="button">Lưu thay đổi</button>
+    </div>
+
+    <div class="settings-grid">
+      <aside class="settings-sidebar">
+        <button class="settings-tab-item active" type="button" data-tab="tab-profile">
+          <span>Hồ sơ cá nhân</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button class="settings-tab-item" type="button" data-tab="tab-notifications">
+          <span>Thông báo</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button class="settings-tab-item" type="button" data-tab="tab-editorial">
+          <span>Tòa soạn</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button class="settings-tab-item" type="button" data-tab="tab-ai">
+          <span>AI & tự động hóa</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button class="settings-tab-item" type="button" data-tab="tab-security">
+          <span>Bảo mật</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </aside>
+
+      <main class="settings-content-card">
+        <div class="tab-pane active" id="tab-profile">
+          <div class="settings-section-header">
+            <h2>Hồ sơ cá nhân</h2>
+            <p>Cập nhật thông tin cá nhân và ảnh đại diện của bạn.</p>
+          </div>
+
+          <div class="profile-avatar-upload">
+            <div class="avatar-circle" id="avatarPreview">LA</div>
+            <div class="avatar-actions">
+              <input type="file" id="inputAvatarFile" accept="image/*" hidden>
+              <button type="button" class="btn-outline-sm" id="btnUploadAvatar">Tải ảnh mới</button>
+              <button type="button" class="btn-ghost-sm" id="btnRemoveAvatar">Xóa ảnh</button>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="profileFullName">Họ và tên</label>
+              <input type="text" class="form-control" id="profileFullName" value="Lan Anh">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="profileRole">Chức danh / Vai trò</label>
+              <input type="text" class="form-control" id="profileRole" value="Phóng viên">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="profileEmail">Địa chỉ Email</label>
+            <input type="email" class="form-control" id="profileEmail" value="lananh@newsroom.ai">
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tab-notifications">
+          <div class="settings-section-header">
+            <h2>Cài đặt thông báo</h2>
+            <p>Chọn những hoạt động bạn muốn nhận thông báo.</p>
+          </div>
+
+          <div class="toggle-list">
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <div class="toggle-title">Bài viết được duyệt</div>
+                <div class="toggle-desc">Nhận thông báo khi biên tập viên duyệt hoặc trả lại bài.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="notifyReviewInput" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <div class="toggle-title">Có nhận xét mới</div>
+                <div class="toggle-desc">Thông báo qua ứng dụng và email của bạn.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="notifyCommentInput" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <div class="toggle-title">Nguồn tin mới</div>
+                <div class="toggle-desc">Khi một nguồn đang theo dõi có tin trong ngày.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="notifySourceInput" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <div class="toggle-title">Nhắc xuất bản</div>
+                <div class="toggle-desc">Trước 30 phút so với giờ đã lên lịch.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="notifyPublishInput">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="status-box-card">
+            <div class="status-box-title">Trạng thái giao diện</div>
+            <div class="status-box-subtitle">Các trạng thái chuẩn dùng trong toàn bộ sản phẩm.</div>
+            <div class="status-box-content">
+              <div class="status-tag-list">
+                <span class="badge-status status-active"><span class="dot"></span> Hoạt động</span>
+                <span class="badge-status status-pending"><span class="dot"></span> Chờ duyệt</span>
+                <span class="badge-status status-paused"><span class="dot"></span> Cần chỉnh sửa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tab-editorial">
+          <div class="settings-section-header">
+            <h2>Cấu hình Tòa soạn</h2>
+            <p>Thiết lập quy trình duyệt bài và danh mục xuất bản.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="profileNewsroomInput">Tên tòa soạn</label>
+            <input type="text" class="form-control" id="profileNewsroomInput" value="Tòa soạn Newsroom AI Việt Nam">
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tab-ai">
+          <div class="settings-section-header">
+            <h2>Cấu hình AI & Tự động hóa</h2>
+            <p>Tối ưu hóa khả năng gợi ý tiêu đề và kiểm tra nguồn tin từ Trợ lý AI.</p>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="assistantLanguageInput">Ngôn ngữ trả lời</label>
+              <select class="form-control" id="assistantLanguageInput">
+                <option value="vi">Tiếng Việt</option>
+                <option value="en">Tiếng Anh</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="assistantToneInput">Giọng văn</label>
+              <select class="form-control" id="assistantToneInput">
+                <option value="professional">Trang trọng</option>
+                <option value="neutral">Trung tính</option>
+                <option value="concise">Ngắn gọn</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="toggle-list">
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <div class="toggle-title">Tự kiểm tra nguồn</div>
+                <div class="toggle-desc">Đánh dấu câu còn thiếu dẫn nguồn trước khi gửi duyệt.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="assistantFactCheckInput" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <div class="toggle-title">Gợi ý từ AI</div>
+                <div class="toggle-desc">Tiêu đề, nguồn và khung giờ đăng phù hợp.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="notifyAiInput" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tab-security">
+          <div class="settings-section-header">
+            <h2>Bảo mật tài khoản</h2>
+            <p>Đổi mật khẩu và quản lý xác thực hai yếu tố.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="currentPasswordInput">Mật khẩu hiện tại</label>
+            <input type="password" class="form-control" id="currentPasswordInput" placeholder="••••••••" autocomplete="current-password">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newPasswordInput">Mật khẩu mới</label>
+            <input type="password" class="form-control" id="newPasswordInput" placeholder="Ít nhất 8 ký tự" autocomplete="new-password">
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-notification" id="toast-msg">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-text">Đã lưu các thay đổi thành công!</span>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
