@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom AI - Thư viện Media</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../common.css">
+  <link rel="stylesheet" href="media-library.css">
+</head>
+<body>
+  <div class="media-view">
+    <div class="media-page-header">
+      <div>
+        <h1 class="page-title">Thư viện Media</h1>
+        <p class="page-subtitle">Quản lý hình ảnh, video và đồ họa dùng chung của tòa soạn.</p>
+      </div>
+      <div class="upload-btn-wrapper">
+        <input type="file" id="inputMediaFile" accept="image/*,video/*" hidden multiple>
+        <button class="btn-primary-navy" id="btnUploadMedia" type="button">
+          <i class="fa-solid fa-plus"></i>
+          <span>Tải media lên</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="media-filter-bar">
+      <div class="media-search-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="mediaSearchInput" placeholder="Tìm kiếm media...">
+      </div>
+
+      <div class="view-switch-toggle">
+        <button class="view-btn active" id="btnViewGrid" type="button" title="Xem dạng lưới">Lưới</button>
+        <button class="view-btn" id="btnViewList" type="button" title="Xem dạng danh sách">Danh sách</button>
+      </div>
+    </div>
+
+    <div class="media-grid-container" id="mediaContainer"></div>
+  </div>
+
+  <div class="toast-notification" id="toast-msg">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-text">Đã cập nhật thư viện</span>
+  </div>
+
+  <script src="media-library.js"></script>
+</body>
+</html>
