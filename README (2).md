@@ -3,8 +3,8 @@
 BTL-31, học phần CSE122 – Phát triển ứng dụng Web cơ bản (Khoa CNTT – Đại học Thủy Lợi). Website tĩnh 13 màn hình cho 4 vai trò, tích hợp dữ liệu giả lập JSON & LocalStorage engine.
 
 - **Bản deploy (GitHub Pages):** [https://20xmay.github.io/Newsroom-AI-Team-/](https://20xmay.github.io/Newsroom-AI-Team-/)
-- **Mã nguồn (Repository):** [https://github.com/20xMay/Newsroom-AI-Team-](https://github.com/20xMay/Newsroom-AI-Team-) *(hoặc [Pet_Companion](https://github.com/vutruonganh/Pet_Companion))*
-- **Chạy local:** Mở tệp `index.html` hoặc bấm *Open with Live Server* trong VS Code.
+- **Mã nguồn (Repository):** [https://github.com/20xMay/Newsroom-AI-Team-](https://github.com/20xMay/Newsroom-AI-Team-) 
+- **Chạy local:** Mở tệp `common.html` hoặc bấm *Open with Live Server* trong VS Code.
 - **Tài liệu đầy đủ:** [`docs/README.md`](docs/README.md)
 
 ---
@@ -127,25 +127,7 @@ Tất cả tính năng AI được thiết kế theo đúng quy trình **6 bư�
 - **JavaScript Engine (ES6+):** Xử lý DOM thuần, Event Delegation, Form Validation, Debounce Search, LocalStorage Data Engine (`js/api.js`).
 - **Dữ liệu Giả lập:** Tệp JSON phong phú trong `assets/data/` (`articles.json`, `sources.json`, `categories.json`).
 
-```text
-20xMay-Newsroom-AI-Team/
-├── README.md                           # Tài liệu hướng dẫn chính của dự án
-├── index.html                          # Trang chủ điều hướng chính & Role Switcher
-├── docs/                               # Thư mục tài liệu minh chứng BTL
-│   ├── project-proposal.md             # Đề xuất bài toán & Ngữ cảnh
-│   ├── screen-inventory.md             # Bảng kiểm kê 13 màn hình chi tiết
-│   ├── roles-and-features.md           # Chi tiết Vai trò & Luồng nghiệp vụ
-│   └── ai-usage-report.md              # Báo cáo Khai báo Minh bạch AI
-├── design/                             # Tài liệu thiết kế UI/UX
-│   ├── figma-link.txt                  # Link Figma công khai
-│   └── mockups/                        # Hình ảnh Mockup thiết kế
-├── pages/                              # Các tệp HTML 12 màn hình theo Role
-├── assets/                             # Hình ảnh, icon và tệp dữ liệu JSON
-├── css/                                # style.css (Design System) & responsive.css
-└── js/                                 # main.js, api.js và các mô-đun JS
-```
 
----
 
 ## 👥 Phân công Công việc & Trách nhiệm Chéo
 
