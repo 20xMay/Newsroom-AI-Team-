@@ -239,17 +239,21 @@ function loadDataFromStorage() {
   if (savedArticles) {
     try {
       const parsed = JSON.parse(savedArticles);
-      queueData = parsed.map((item, index) => ({
-        id: item.id || index + 1,
-        title: item.title,
-        category: item.category || "Công nghệ",
-        words: item.words || "1.240 từ",
-        author: item.author || "Nguyễn Lan Anh",
-        createdAt: item.createdAt || "24 Thg 6, 09:20",
-        priority: item.priority || (index % 2 === 0 ? "Cao" : "Trung bình"),
-        status: item.status || "Chờ duyệt",
-        tabGroup: item.tabGroup || "Draft"
-      }));
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        queueData = parsed.map((item, index) => ({
+          id: item.id ? Number(item.id) : index + 1,
+          title: item.title || "Bài viết không có tiêu đề",
+          category: item.category || "Công nghệ",
+          words: item.words || "1.240 từ",
+          author: item.author || "Nguyễn Lan Anh",
+          createdAt: item.createdAt || "24 Thg 6, 09:20",
+          priority: item.priority || (index % 2 === 0 ? "Cao" : "Trung bình"),
+          status: item.status || "Chờ duyệt",
+          tabGroup: item.tabGroup || "Draft"
+        }));
+      } else {
+        queueData = initialQueueData;
+      }
     } catch (e) {
       queueData = initialQueueData;
     }
@@ -428,9 +432,16 @@ function updatePaginationUI() {
 }
 
 function openArticleEditor(id) {
-  if (window.parent && window.parent.navigateToPage) {
-    window.parent.navigateToPage("trinhsoanthao.html", "Trình soạn thảo");
-  } else {
-    window.location.href = "trinhsoanthao.html";
+  localStorage.setItem("selectedArticleId", id);
+  
+  try {
+    if (window.parent && window.parent !== window && typeof window.parent.navigateToPage === "function") {
+      window.parent.navigateToPage("trinhsoanthao.html", "Trình soạn thảo");
+      return;
+    }
+  } catch (e) {
+    console.warn("Cross-origin frame error:", e);
   }
+
+  window.location.href = "trinhsoanthao.html";
 }
